@@ -12,6 +12,30 @@ static float epsilon=8.8541878128e-12;
 static float pi4e0=4*pi*epsilon;
 
 
+
+double norm(double* x, double* y)
+{
+    uint8_t dim=sizeof(x)/3;
+    double __=0;
+    for(uint8_t i;i<dim;i++)
+    {
+        __+=sqrt(pow(x[i],2)+pow(y[i],2));
+        
+    }
+    return __;
+
+}
+
+double dot_product(float* A, float* B){
+    uint8_t vl=sizeof(A)/4;
+    double val=0;
+    for(uint8_t i=0;i<vl;){
+        val+=A[0]*B[0];
+    }
+    return val;
+}
+
+
 int main()
 {
     string current_line;
@@ -23,7 +47,6 @@ int main()
        n_of_points=stof(current_line);
 
     }
-    
     double points[n_of_points][3];
     double normals[n_of_points][3];
    
