@@ -14,6 +14,7 @@ class Reality(object):
         self.__pcd.orient_normals_consistent_tangent_plane(100)
         self.__points=np.asarray(self.__pcd.points)
         self.__pcd_normals=np.asarray(self.__pcd.normals)
+        self.__res=resolution
     
     def field(self,function):
         function=function[function.index("[")+1:function.index("]")]
@@ -28,6 +29,9 @@ class Reality(object):
         file.write(c_out)
         file.close()
         os.system("g++ backend.cpp -o backend")
+        file=open("metadata.txt","w")
+        file.write(str(self.__res))
+        file.close()
     
     def render(self):
         np.savetxt("points.csv", self.__points, delimiter=",")
@@ -38,7 +42,7 @@ class Reality(object):
         if not "out.txt" in __:
             file=open("out.txt","w")
             file.close()
-        
+    
         
         os.system("./backend")
         val=0
