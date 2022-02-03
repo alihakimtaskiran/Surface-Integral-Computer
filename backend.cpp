@@ -12,61 +12,28 @@ static float epsilon=8.8541878128e-12;
 static float pi4e0=4*pi*epsilon;
 
 
-void qp(string __){
-    cout<<__<<endl;
-}
-void qp(float  __){
-    cout<<__<<endl;
-}
-
-double norm(double* x, double* y)
-{
-    uint8_t dim=sizeof(x)/3;
-    double __=0;
-    for(uint8_t i;i<dim;i++)
-    {
-        __+=sqrt(pow(x[i],2)+pow(y[i],2));
-        
-    }
-    return __;
-
-}
-
-double dot_product(float* A, float* B){
-    uint8_t vl=sizeof(A)/4;
-    double val=0;
-    for(uint8_t i=0;i<vl;){
-        val+=A[0]*B[0];
-    }
-    return val;
-}
-
-//field function begins
-
-
-//field function begins
-
 int main()
 {
     string current_line;
-    fstream ioc;
-    ioc.open("points.csv");
+    fstream io;
+    io.open("metadata.txt");
     unsigned long n_of_points=0;
-    while(getline(ioc,current_line))
+    while(getline(io,current_line))
     {
-       n_of_points++;
+       n_of_points=stof(current_line);
 
     }
+    
     double points[n_of_points][3];
     double normals[n_of_points][3];
    
-    ioc.close();
-    fstream iop;
+    io.close();
+
    
-    iop.open("points.csv");
+    io.open("points.csv");
     unsigned long current_point=0;
 
-    while(getline(iop,current_line))
+    while(getline(io,current_line))
     {
         uint16_t commas[2]={0,0};
         uint16_t len=current_line.length();
@@ -90,12 +57,12 @@ int main()
 
 
     }
-    iop.close();
-    fstream ion;
-    ion.open("normals.csv");
+    io.close();
+
+    io.open("normals.csv");
 
     current_point=0;
-  while(getline(ion,current_line))
+  while(getline(io,current_line))
     {
         uint16_t commas[2]={0,0};
         uint16_t len=current_line.length();
@@ -119,7 +86,7 @@ int main()
 
 
     }
-    ion.close();
+    io.close();
 //field data:
 double r_val;
 
@@ -138,7 +105,7 @@ r_val+=__;
 
 
 }
-fstream io;
+
 io.open("out.txt");
 io<<r_val;
 io.close();
