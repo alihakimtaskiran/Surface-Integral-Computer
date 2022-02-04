@@ -10,7 +10,7 @@ SurfaceIntegralComputer(obj_path,resolution=7500)--|
 ### 2.Methods
 - <code>**SurfaceIntegralComputer(obj_path,resolution=7500)**</code>. It is an class. <code>obj_path</code> is file path of the **.ply** object. <code> resolution</code> is number of points representing the object
 - <code>**field(function)**</code> Imports the field function. <code>function</code> parameter is used to indicate the field function. Its format is <code>[A,B,C]</code> where A, B and C are functions that are valid in C/C++. Additionally, only x,y and z can be parameter of these functions. For example:
- <span style="background-color: #FF0"> <pre>[4x*5y , 6z , sin(x*z+y) ]</pre></span>
+ <span style="background-color: #FF0"> <code>[x/y, z-y , sin(x+y)]</code></span>
 - <code>render()</code> computes the final result of the surface integral
 
 ### 3.Example
