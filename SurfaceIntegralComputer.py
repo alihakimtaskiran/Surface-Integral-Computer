@@ -24,7 +24,7 @@ class Reality(object):
         c_out="#include<cmath> \nfloat fieldX(float x,float y, float z){return "
         c_out+=function[0]+";} float fieldY(float x,float y, float z){return "
         c_out+=function[1]+";}float fieldZ(float x,float y, float z){return "
-        c_out+=function[0]+";} "
+        c_out+=function[2]+";} "
         file=open("field.c","w")
         file.write(c_out)
         file.close()
